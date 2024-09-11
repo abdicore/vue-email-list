@@ -3,14 +3,24 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
-      message: 'Hello Vue!'
+      apiUrl:'https://flynn.boolean.careers/exercises/api/random/mail',
+      randomMail:'',
     }
+  },
+  methods: {
+    getRandomMail(){
+      axios.get(this.apiUrl)
+    .then((response) => {
+        console.log(response.data.response);
+        this.randomMail = response.data.response
+          }
+        );
+     }
+  },
+  mounted(){
+    this.getRandomMail();
   }
 }).mount('#app')
 
 
-axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-    .then(function(response){
-        console.log(response.data.response)
-    }
-);
+
