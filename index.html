@@ -28,7 +28,8 @@
         <main>
             <h2 class="text-center mt-4">Lista di mail casuali</h2>
             <ul>
-                <li>{{randomMail}}</li>
+                <li v-for="mail in mails">{{mail}}</li>
+
             </ul>
 
         </main>

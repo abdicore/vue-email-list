@@ -4,23 +4,25 @@ createApp({
   data() {
     return {
       apiUrl:'https://flynn.boolean.careers/exercises/api/random/mail',
-      randomMail:'',
+      mails: [ ],
     }
   },
   methods: {
+
     getRandomMail(){
-      axios.get(this.apiUrl)
-    .then((response) => {
-        console.log(response.data.response);
-        this.randomMail = response.data.response
-          }
-        );
+      for (let i = 1; i <= 10; i++){
+        axios.get(this.apiUrl)
+        .then((response) => {
+          this.mails.push(response.data.response);
+              }
+            );
+      }
+ 
      }
   },
   mounted(){
     this.getRandomMail();
   }
 }).mount('#app')
-
 
 
